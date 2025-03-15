@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知知子百日纪念</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .page {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(20px);
+        }
+        .page.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .content {
+            max-width: 800px;
+            width: 90%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ff0000, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #fff;
+        }
+        .nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://source.unsplash.com/1600x900/?anime,dark') no-repeat center center/cover;
+            filter: blur(10px);
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="page visible" id="page1">
+        <div class="content">
+            <h1>知知子百日纪念</h1>
+            <p>亲爱的知知子，今天是你直播的第100天！🎉 在这特别的日子里，我想用这篇小作文表达我对你的感激与祝福。</p>
+        </div>
+    </div>
+    <div class="page" id="page2">
+        <div class="content">
+            <p>从第一次看到你的直播，我就被你的魅力深深吸引。无论是你甜美的声音，还是你与观众互动的热情，都让我感受到了一份独特的温暖。作为一名曾经的舰长，我见证了你的成长与努力，也为你感到无比骄傲。</p>
+        </div>
+    </div>
+    <div class="page" id="page3">
+        <div class="content">
+            <p>在这100天里，你带给了我们无数的欢笑与感动。每一场直播都是一次心灵的旅程，让我们在忙碌的生活中找到了一份难得的放松与快乐。你的坚持与努力，也激励着我在自己的生活中不断前行。</p>
+        </div>
+    </div>
+    <div class="page" id="page4">
+        <div class="content">
+            <p>知知子，你不仅仅是一位虚拟主播，更是我们心中的朋友与家人。感谢你在这段时间里的陪伴，感谢你为我们带来的每一份美好回忆。未来的日子里，我依然会默默支持你，期待你带来更多精彩的直播内容。</p>
+        </div>
+    </div>
+    <div class="page" id="page5">
+        <div class="content">
+            <p>愿你在未来的每一天都能保持初心，继续追逐自己的梦想。无论遇到什么困难，请记住，我们永远是你最坚强的后盾。百日只是一个开始，未来的路还很长，但我相信，你一定会走得更加坚定与辉煌。</p>
+        </div>
+    </div>
+    <div class="page" id="page6">
+        <div class="content">
+            <p>最后，再次祝你百日快乐！愿你的每一天都充满阳光与笑容，愿你的梦想如星辰般闪耀！✨</p>
+        </div>
+    </div>
+    <div class="nav-buttons">
+        <button onclick="prevPage()">上一页</button>
+        <button onclick="nextPage()">下一页</button>
+    </div>
+
+    <!-- 生日快乐歌 -->
+    <audio autoplay loop>
+        <source src="https://www.soundjay.com/happy-birthday-song-1.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 6;
+
+        function showPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('visible');
+            });
+            document.getElementById(`page${pageNumber}`).classList.add('visible');
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        // 初始显示第一页
+        showPage(1);
+    </script>
+</body>
+</html>
